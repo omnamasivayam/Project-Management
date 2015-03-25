@@ -21,6 +21,6 @@ public interface KnowledgeTransferDao extends CrudRepository<KnowledgeTransfer, 
    * 
    * @param email the user email.
    */
-  public KnowledgeTransfer findById(Long knowledgeTransferId);
+  public KnowledgeTransfer findByknowledgeTransferId(Long knowledgeTransferId);
 
 } 

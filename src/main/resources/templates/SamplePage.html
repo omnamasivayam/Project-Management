@@ -20,6 +20,7 @@
 	<div class="row">
 	<div class="col-sm-4">
     	<h1>Projects List</h1>
+   
 		<form th:action="@{/project}" th:object="${project}" method="post">
 			<input type="hidden" th:field="*{projectId}" />
 			<label for="projectName">project Name:</label>
@@ -32,7 +33,7 @@
 			<input type="text" th:field="*{projectDescription}"/>	
 			<input type="submit"/>
 		</form>
-		
+		<!-- 
 		<form th:action="@{/employee}" th:object="${employee}" method="post">
             <input type="hidden" th:field="*{empId}" />           
             <label for="empName">Employee name:</label>
@@ -53,8 +54,8 @@
                 <option>Another payment method</option>
             </select>
             
-            <label for="designation">designation:</label>
-            <input type="text" th:field="*{designation}" size="10" />
+            <label for="empDesignation">designation:</label>
+            <input type="text" th:field="*{empDesignation}" size="10" />
             <input type="submit" />
         </form>
 		
@@ -99,7 +100,7 @@
         </form>
 		
 		
-		<br></br>
+				<br></br>
 			<table class="table table-bordered">
 				<tr>
 					<th>ID</th>
@@ -141,7 +142,8 @@
 	        		<td th:text="${kt.knowledgeTransferTo.empName}">empName</td>
 	        		<td th:text="${kt.knowledgeTransferTopic}">knowledgeTransferTopic</td>
 				</tr>
-			</table>
+			</table> 
+			-->
 		</div>
 	</div>	
 </div>

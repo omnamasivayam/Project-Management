@@ -67,13 +67,13 @@ public class Project {
 		this.projectDescription = projectDescription;
 	}
 
-	public List<Employee> getProjectEmployees() {
+/*	public List<Employee> getProjectEmployees() {
 		return projectEmployees;
 	}
 
 	public void setProjectEmployees(List<Employee> projectEmployees) {
 		this.projectEmployees = projectEmployees;
-	}
+	}*/
 
 	@Column
 	public String projectClient;
@@ -85,10 +85,10 @@ public class Project {
 	public String projectDescription;
 	
 	//@OneToMany(mappedBy="empProject")
-	 @OneToMany(cascade={CascadeType.ALL})
+	 /*@OneToMany(cascade={CascadeType.ALL})
 	 @JoinColumn(name="projectId")
-	 @IndexColumn(name="idx")
-	 private List <Employee> projectEmployees;
+	 @IndexColumn(name="idx")*/
+	// private List <Employee> projectEmployees;
 	
 	
 	public Project() { }

@@ -33,27 +33,39 @@ public class ProjectController {
 
   @RequestMapping("/")
   @ResponseBody
-  public String index() {
-	 // ModelAndView modelAndView = new ModelAndView("login");
-	  return "Application working";
+  public ModelAndView index() {
+	  ModelAndView modelAndView = new ModelAndView("SamplePage");
+	  modelAndView.addObject("project", new Project());
+	  modelAndView.addObject("employee", new Employee());
+	  modelAndView.addObject("knowledgeTransfer", new KnowledgeTransfer());
+	  /*Object projectList = projectDao.findAll();
+	   Object employeeList = employeeDao.findAll();
+	    Object knowledgeTransferList = knowledgeTransferDao.findAll();
+	    modelAndView.addObject("projectList", projectList);
+	    modelAndView.addObject("employeeList", employeeList);
+	    modelAndView.addObject("knowledgeTransferList", knowledgeTransferList);*/
+	  return modelAndView;
   }
   
-  @RequestMapping(value="/project", method=RequestMethod.POST)
+  @RequestMapping(value="/project" , method=RequestMethod.POST)
 	public ModelAndView projectActions(@ModelAttribute Project project, BindingResult result, @RequestParam Map<String, Object> map){
 	    ModelAndView modelAndView = new ModelAndView("SamplePage");
+	    System.out.println("client is " + project.getProjectId());
+	    System.out.println("client is " + project.getProjectClient());
 	    projectDao.save(project);
 	    
-	    Object projectList = projectDao.findAll();
+	   
+	   /* Object projectList = projectDao.findAll();
 	    Object employeeList = employeeDao.findAll();
 	    Object knowledgeTransferList = knowledgeTransferDao.findAll();
 	    modelAndView.addObject("projectList", projectList);
 	    modelAndView.addObject("employeeList", employeeList);
 	    modelAndView.addObject("knowledgeTransferList", knowledgeTransferList);
-	    
+	    */
 		return modelAndView;
 	}
   
-  @RequestMapping(value="/employee", method=RequestMethod.POST)
+  @RequestMapping(value="/employee")
 	public ModelAndView employeetActions(@ModelAttribute Employee employee, BindingResult result, @RequestParam Map<String, Object> map){
 	    ModelAndView modelAndView = new ModelAndView("SamplePage");
 	    employeeDao.save(employee);

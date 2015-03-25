@@ -22,11 +22,11 @@ public class KnowledgeTransfer {
 	private long knowledgeTransferId;
 
 	@ManyToOne
-	@JoinColumn(name="empId",insertable=false, updatable=false, nullable=false)
+	@JoinColumn(name="empId",insertable=false, updatable=false)
 	private Employee knowledgeTransferFrom;
 	
 	@ManyToOne
-	@JoinColumn(name="empId",insertable=false, updatable=false, nullable=false)
+	@JoinColumn(name="empId",insertable=false, updatable=false)
 	private Employee knowledgeTransferTo;
 	
 	@Column

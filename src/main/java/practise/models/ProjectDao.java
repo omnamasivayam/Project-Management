@@ -21,6 +21,6 @@ public interface ProjectDao extends CrudRepository<Project, Long> {
    * 
    * @param email the user email.
    */
-  public Project findById(Long projectId);
+  // public Project findByprojectId(Long projectId);
 
 } // class UserDao

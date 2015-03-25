@@ -21,6 +21,6 @@ public interface EmployeeDao extends CrudRepository<Employee, Long> {
    * 
    * @param email the user email.
    */
-  public Employee findById(Long empId);
+  public Employee findByempId(Long empId);
 
 } 
