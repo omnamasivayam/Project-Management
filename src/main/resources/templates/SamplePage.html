@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <!--link rel="stylesheet" type="text/css" media="all" href="style.css" th:href="@{style.css}" /!-->
+    <!--link rel="stylesheet" type="text/css" media="all" href="style.css" th:href="@{style.css}" /!-->
+</head>
+<body >
+
+
+	<div class="container">
+	<div class="row">
+	<div class="col-sm-4">
+    	<h1>Projects List</h1>
+		<form th:action="@{/project}" th:object="${project}" method="post">
+			<input type="hidden" th:field="*{projectId}" />
+			<label for="projectName">project Name:</label>
+			<input type="text" th:field="*{projectName}" />
+			<label for="projectClient">project Client:</label>
+			<input type="text" th:field="*{projectClient}"/>
+			<label for="projectLocation">project Location:</label>
+			<input type="text" th:field="*{projectLocation}"/>
+			<label for="projectDescription">project Description:</label>
+			<input type="text" th:field="*{projectDescription}"/>	
+			<input type="submit"/>
+		</form>
+		
+		<form th:action="@{/employee}" th:object="${employee}" method="post">
+            <input type="hidden" th:field="*{empId}" />           
+            <label for="empName">Employee name:</label>
+            <input type="text" th:field="*{empName}" value="John" />
+            
+			<label for="empSkillSet">Emp SkillSet:</label>
+            <select th:field="*{empSkillSet}" th:remove="all-but-first" multiple="multiple">
+                <option th:value="Java" th:text="Java">Java</option>
+                <option th:value="C" th:text="C">C</option>
+                <option th:value="Testing" th:text="Testing">Testing</option>
+            </select>
+            
+            <label for="empProject">emp Project:</label>
+            <select th:field="*{empProject}" th:remove="all-but-first">
+                <option th:each="empProject : ${projectList}"
+                        th:value="${empProject}" th:text="${empProject.projectName}">Credit card</option>
+                <option>Another payment method</option>
+                <option>Another payment method</option>
+            </select>
+            
+            <label for="designation">designation:</label>
+            <input type="text" th:field="*{designation}" size="10" />
+            <input type="submit" />
+        </form>
+		
+		
+		<form th:action="@{/knowledgeTransfer}" th:object="${knowledgeTransfer}" method="post">
+            <input type="hidden" th:field="*{knowledgeTransferId}" />           
+			
+			<label for="knowledgeTransferFrom">knowledgeTransferFrom:</label>
+            <select th:field="*{knowledgeTransferFrom}" th:remove="all-but-first">
+                <option th:each="knowledgeTransferFrom : ${employeeList}"
+                        th:value="${knowledgeTransferFrom}" th:text="${knowledgeTransferFrom.empName}">Credit card</option>
+                <option>Another payment method</option>
+                <option>Another payment method</option>
+            </select>
+            
+            <label for="knowledgeTransferTo">knowledgeTransferTo:</label>
+            <select th:field="*{knowledgeTransferTo}" th:remove="all-but-first">
+                <option th:each="knowledgeTransferTo : ${employeeList}"
+                        th:value="${knowledgeTransferTo}" th:text="${knowledgeTransferTo.empName}">Credit card</option>
+                <option>Another payment method</option>
+                <option>Another payment method</option>
+            </select>
+            
+            <h4>knowledgeTransferStartDate</h4>
+    			<script>
+  				$(function() {
+    						$( "#knowledgeTransferStartDate" ).datepicker();
+  						});
+  				</script>
+  				Date: <input type="date" id="knowledgeTransferStartDate"></input>
+	  	    <h4>knowledgeTransferEndDate</h4>
+    			<script>
+  				$(function() {
+    						$( "#knowledgeTransferEndDate" ).datepicker();
+  						});
+  				</script>
+  			<p>Date: <input type="date" id="knowledgeTransferEndDate"></input></p>
+            
+            <label for="knowledgeTransferTopic">knowledgeTransferTopic:</label>
+            <input type="text" th:field="*{knowledgeTransferTopic}" size="10" />
+            <input type="submit" />
+        </form>
+		
+		
+		<br></br>
+			<table class="table table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>Project name</th>
+					<th>Client</th>
+					<th>Location</th>
+				</tr>
+				<tr th:each="proj : ${projectList}">
+	        		<td th:text="${proj.projectId}">1</td>
+	        		<td th:text="${proj.projectName}">projectname</td>
+	        		<td th:text="${proj.projectClient}">client</td>
+	        		<td th:text="${proj.projectLocation}">location</td>
+				</tr>
+			</table>
+				<table class="table table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>Employee name</th>
+					<th>Project</th>
+					<th>Designation</th>
+				</tr>
+				<tr th:each="emp : ${employeeList}">
+	        		<td th:text="${emp.empId}">1</td>
+	        		<td th:text="${emp.empName}">empName</td>
+	        		<td th:text="${emp.empProject.projectName}">projectName</td>
+	        		<td th:text="${emp.empDesignation}">empDesignation</td>
+				</tr>
+			</table>
+				<table class="table table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>From</th>
+					<th>To</th>
+					<th>knowledgeTransferTopic</th>
+				</tr>
+				<tr th:each="kt : ${knowledgeTransferList}">
+	        		<td th:text="${kt.knowledgeTransferId}">1</td>
+	        		<td th:text="${kt.knowledgeTransferFrom.empName}">empName</td>
+	        		<td th:text="${kt.knowledgeTransferTo.empName}">empName</td>
+	        		<td th:text="${kt.knowledgeTransferTopic}">knowledgeTransferTopic</td>
+				</tr>
+			</table>
+		</div>
+	</div>	
+</div>
+</body>
+</html>
