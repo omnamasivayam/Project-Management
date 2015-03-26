@@ -38,38 +38,45 @@ public class ProjectController {
 	  modelAndView.addObject("project", new Project());
 	  modelAndView.addObject("employee", new Employee());
 	  modelAndView.addObject("knowledgeTransfer", new KnowledgeTransfer());
-	  /*Object projectList = projectDao.findAll();
-	   Object employeeList = employeeDao.findAll();
-	    Object knowledgeTransferList = knowledgeTransferDao.findAll();
-	    modelAndView.addObject("projectList", projectList);
-	    modelAndView.addObject("employeeList", employeeList);
-	    modelAndView.addObject("knowledgeTransferList", knowledgeTransferList);*/
+	  Object projectList = projectDao.findAll();
+	  Object employeeList = employeeDao.findAll();
+	  Object knowledgeTransferList = knowledgeTransferDao.findAll();
+	  modelAndView.addObject("projectList", projectList);
+	  modelAndView.addObject("employeeList", employeeList);
+	  modelAndView.addObject("knowledgeTransferList", knowledgeTransferList);
 	  return modelAndView;
   }
   
   @RequestMapping(value="/project" , method=RequestMethod.POST)
-	public ModelAndView projectActions(@ModelAttribute Project project, BindingResult result, @RequestParam Map<String, Object> map){
+	public ModelAndView projectActions(@ModelAttribute Project project, @RequestParam Map<String, Object> map){
 	    ModelAndView modelAndView = new ModelAndView("SamplePage");
 	    System.out.println("client is " + project.getProjectId());
 	    System.out.println("client is " + project.getProjectClient());
 	    projectDao.save(project);
 	    
-	   
-	   /* Object projectList = projectDao.findAll();
+	    modelAndView.addObject("project", new Project());
+		modelAndView.addObject("employee", new Employee());
+		modelAndView.addObject("knowledgeTransfer", new KnowledgeTransfer());
+	    Object projectList = projectDao.findAll();
 	    Object employeeList = employeeDao.findAll();
 	    Object knowledgeTransferList = knowledgeTransferDao.findAll();
 	    modelAndView.addObject("projectList", projectList);
 	    modelAndView.addObject("employeeList", employeeList);
 	    modelAndView.addObject("knowledgeTransferList", knowledgeTransferList);
-	    */
+	    
 		return modelAndView;
 	}
   
   @RequestMapping(value="/employee")
-	public ModelAndView employeetActions(@ModelAttribute Employee employee, BindingResult result, @RequestParam Map<String, Object> map){
+	public ModelAndView employeetActions(@ModelAttribute Employee employee, @RequestParam Map<String, Object> map){
 	    ModelAndView modelAndView = new ModelAndView("SamplePage");
+	    System.out.println("emp name is " + employee.getEmpName());
+	    System.out.println("emp value is " + employee.getEmpProject().getProjectName());
 	    employeeDao.save(employee);
 	    
+	    modelAndView.addObject("project", new Project());
+	  	modelAndView.addObject("employee", new Employee());
+	  	modelAndView.addObject("knowledgeTransfer", new KnowledgeTransfer());
 	    Object projectList = projectDao.findAll();
 	    Object employeeList = employeeDao.findAll();
 	    Object knowledgeTransferList = knowledgeTransferDao.findAll();

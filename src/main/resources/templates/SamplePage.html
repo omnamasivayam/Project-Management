@@ -33,25 +33,23 @@
 			<input type="text" th:field="*{projectDescription}"/>	
 			<input type="submit"/>
 		</form>
-		<!-- 
+	
 		<form th:action="@{/employee}" th:object="${employee}" method="post">
             <input type="hidden" th:field="*{empId}" />           
             <label for="empName">Employee name:</label>
             <input type="text" th:field="*{empName}" value="John" />
             
 			<label for="empSkillSet">Emp SkillSet:</label>
-            <select th:field="*{empSkillSet}" th:remove="all-but-first" multiple="multiple">
+            <select th:field="*{empSkillSet}"  multiple="multiple">
                 <option th:value="Java" th:text="Java">Java</option>
                 <option th:value="C" th:text="C">C</option>
                 <option th:value="Testing" th:text="Testing">Testing</option>
             </select>
             
             <label for="empProject">emp Project:</label>
-            <select th:field="*{empProject}" th:remove="all-but-first">
+            <select th:field="*{empProject}">
                 <option th:each="empProject : ${projectList}"
                         th:value="${empProject}" th:text="${empProject.projectName}">Credit card</option>
-                <option>Another payment method</option>
-                <option>Another payment method</option>
             </select>
             
             <label for="empDesignation">designation:</label>
@@ -143,7 +141,7 @@
 	        		<td th:text="${kt.knowledgeTransferTopic}">knowledgeTransferTopic</td>
 				</tr>
 			</table> 
-			-->
+			
 		</div>
 	</div>	
 </div>

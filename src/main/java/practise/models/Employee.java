@@ -43,14 +43,14 @@ public class Employee {
 	public void setEmpName(String empName) {
 		this.empName = empName;
 	}
-/*
+
 	public Project getEmpProject() {
 		return empProject;
 	}
 
 	public void setEmpProject(Project empProject) {
 		this.empProject = empProject;
-	}*/
+	}
 
 	public Set<String> getEmpSkillSet() {
 		return empSkillSet;
@@ -81,9 +81,10 @@ public class Employee {
 	private String empName;
 	
 	
-	//@ManyToOne
+	@ManyToOne
+	@Column
 	//@JoinColumn(name="projectId",insertable=false, updatable=false)
-	//private Project empProject;
+	private Project empProject;
 	
 	@ElementCollection
 	@Column
@@ -106,11 +107,11 @@ public class Employee {
 	    this.empId = id;
 	  }
 	  
-	  //public Employee(String name, Project project, Set<String> skillSet, String designation) {  
-	  public Employee(String name, Set<String> skillSet, String designation) {   
-		  this.empName = name;
-	//    this.empProject = project;
-	    this.empSkillSet = skillSet;
+	  public Employee(String name, Set<String> skillSet, Project project,  String designation) {  
+	//  public Employee(String name, Set<String> skillSet, String designation) {   
+		this.empName = name;
+	    this.empProject = project;
+	    this.empSkillSet =skillSet;
 	    this.empDesignation = designation;
 	  }
 
